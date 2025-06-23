@@ -47,7 +47,14 @@
   }
 
   th {
-    background: #DDE6ED;
+    background: #f6f6f6;
+
+  }
+  th span {
+  margin-right: 0.5rem;
+}
+  th button {
+    width:4ch;
   }
 }
 
@@ -74,6 +81,7 @@
   font-size: 0.9rem;
   cursor: pointer;
   padding-left: 0.3rem;
+
 }
 
 .dropdownWrapper {

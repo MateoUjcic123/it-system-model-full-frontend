@@ -7,6 +7,9 @@ import styles from './components/loginform.module.scss'
 // @ts-ignore
 import NET from 'vanta/dist/vanta.net.min'
 import * as THREE from 'three'
+import Sidebar from './components/Sidebar'
+import Footer from './components/Footer'
+
 
 function App() {
   const location = useLocation()
@@ -41,12 +44,19 @@ function App() {
     // eslint-disable-next-line
   }, [location.pathname])
 
+function handleLogout() {
+    // Clear auth (example: localStorage, cookies, etc.)
+    localStorage.removeItem('authToken');
+    // Redirect to login page
+    window.location.href = '/login';
+}
+
   return (
     <>
       {location.pathname === '/login' && (
         <div ref={vantaRef} className={styles.animatedBg} />
       )}
-      
+      <Sidebar></Sidebar>
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<LoginPage />} />
@@ -54,6 +64,7 @@ function App() {
         <Route path="/viewer" element={<GraphicalModelViewer />} />
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
+      <Footer/>
     </>
   )
 }
